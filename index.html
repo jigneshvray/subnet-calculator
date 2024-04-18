@@ -478,77 +478,70 @@ function toggleColumn(cb)
 
 <style type="text/css">
 
-H1		{
-  font-family: Arial, Verdana, sans-serif;
-  font-size: 18pt;
-}
-
-BODY		{
-  font-family: Arial, Verdana, sans-serif;
-}
-
-P		{
-  font-family: Arial, Verdana, sans-serif;
-  font-size: 75%;
-}
-
-.label {
-  font-family: Arial, Verdana, sans-serif;
-  font-size: 60%;
-}
-
-.calc {
-  font-family: Arial, Verdana, sans-serif;
-  font-size: 80%;
-  border-collapse: collapse; 
-}
-
-.calc td, .calc th {
- border: 1px solid black;
-}
-
-.calc thead {
-  font-weight: bold;
-  background-color: #eeeeee;
-}
-
-.disabledAction {
- color: #dddddd;
-}
-
-.maskSpan {
-  background-color: #cccccc;
-  text-align: right;
-}
-.maskSpanJoinable {
-  background-color: #cccccc;
-  text-align: right;
- cursor: pointer;
-}
-
-.maskSpanRotate {
- filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
- background-color:green;
-}
- .footer {
-        position: fixed;
-        right: 18px;
-        bottom: 14px;
-        padding: 10px;
-        font-size: 18px;
-        text-align: right;
-        color: black;
-        text-align: justify;
-        
-      }
-
-      .footer a:hover {
-        text-decoration: underline;
-      }
-    
-      .footer a {
-        color: blue;
-      }
+body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            color: #333;
+        }
+        p {
+            text-align: center;
+            font-size: 16px;
+            color: #666;
+        }
+        form {
+            text-align: center;
+            margin-top: 20px;
+        }
+        table {
+            margin: 0 auto;
+            border-collapse: collapse;
+            width: 80%;
+            border: 1px solid #ccc;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #f0f0f0;
+            color: #333;
+        }
+        input[type="text"], input[type="submit"], input[type="button"], input[type="checkbox"] {
+            padding: 5px;
+            font-size: 14px;
+        }
+        input[type="submit"], input[type="button"] {
+            cursor: pointer;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+        }
+        input[type="checkbox"] {
+            margin-right: 5px;
+        }
+        .footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #f0f0f0;
+            padding: 10px;
+            text-align: center;
+            font-size: 14px;
+            color: #333;
+        }
+        .footer a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
 </style>
 </head>
 <body>
@@ -618,10 +611,6 @@ P		{
 </tr-->
 </tbody>
 </table>
-<div class="footer">
-  	Credit :    <a href="https://fryguy.net/" target="_blank">@fryguy</a><br>
-    Created by: <a href="https://www.linkedin.com/in/jigneshvray/" target="_blank">Jigneshvray</a>  
-</div>
 
 </body>
 </html>
