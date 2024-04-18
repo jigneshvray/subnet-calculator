@@ -17,6 +17,13 @@ To use the Subnet Calculator, follow these steps:
 2. **Setup**: No additional setup is required. Simply open the `index.html` file in your web browser.
 3. **Usage**: Enter the IP address and mask bit in the provided input fields. Click the "Update" button to view subnet details.
 
+## Docker Setup
+1. Run the docker command
+```console
+docker run -d --name subnet-calculator -p 80:80 subnet-calculator
+```
+2. Provide localhost and port to access the subnet-calculator
+   
 ## Example
 
 Suppose you have an IP address `192.168.1.0` with a mask bit `16`. After entering these values into the Subnet Calculator and clicking "Update," the tool will display the following subnet details:
