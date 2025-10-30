@@ -1,19 +1,60 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
 trigger:
 - main
 
 pool:
   vmImage: ubuntu-latest
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+stages:
+# =======================
+# 1️⃣ Build Stage
+# =======================
+- stage: Build
+  displayName: "Build HTML Website"
+  jobs:
+  - job: BuildJob
+    displayName: "Validate and Package Website"
+    steps:
+    - checkout: self
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+    - script: |
+        echo "🔍 Validating HTML files..."
+        ls -R website
+      displayName: "List Website Files"
+
+    - script: |
+        echo "📦 Packaging website into a zip file..."
+        zip -r website.zip website/
+      displayName: "Zip Website Folder"
+
+    - task: PublishBuildArtifacts@1
+      inputs:
+        PathtoPublish: 'website.zip'
+        ArtifactName: 'html_website'
+        publishLocation: 'Container'
+      displayName: "Publish Website Artifact"
+
+
+# =======================
+# 2️⃣ Deploy Stage
+# =======================
+- stage: Deploy
+  displayName: "Deploy HTML Website"
+  dependsOn: Build
+  jobs:
+  - deployment: DeployJob
+    displayName: "Deploy to Web Server"
+    environment: "production"
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - download: current
+            artifact: html_website
+            displayName: "Download Website Artifact"
+
+          - script: |
+              echo "🚀 Deploying website..."
+              mkdir -p /var/www/html/
+              unzip -o $(Pipeline.Workspace)/html_website/website.zip -d /var/www/html/
+              echo "✅ Deployment completed!"
+            displayName: "Copy Website Files to Web Root"
